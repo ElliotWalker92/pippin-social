@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --color-ivory: #f7f4ef;
+  --color-stone: #e7ded3;
+  --color-sage: #a8b29a;
+  --color-charcoal: #2b2b2b;
+  --color-softblack: #111111;
+}
+
+@theme inline {
+  --color-ivory: var(--color-ivory);
+  --color-stone: var(--color-stone);
+  --color-sage: var(--color-sage);
+  --color-charcoal: var(--color-charcoal);
+  --color-softblack: var(--color-softblack);
+
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", serif;
+  --font-sans: var(--font-jost), "Jost", sans-serif;
+
+  --tracking-widest-plus: 0.15em;
+
+  --animate-fade-rise: fade-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+
+  @keyframes fade-rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-sage);
+  color: var(--color-softblack);
+}
+
+.fade-in-el {
+  opacity: 0;
+}
+
+.fade-in-el.is-visible {
+  animation: var(--animate-fade-rise);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-el {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 3px;
+}
