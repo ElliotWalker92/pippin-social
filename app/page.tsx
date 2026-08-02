@@ -1,12 +1,13 @@
 import { AboutSplit } from "@/components/AboutSplit";
 import { ClosingCta } from "@/components/ClosingCta";
-import { FeatureBand } from "@/components/FeatureBand";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Nav } from "@/components/Nav";
+import { PippinDifference } from "@/components/PippinDifference";
 import { Process } from "@/components/Process";
-import { Results } from "@/components/Results";
 import { ServiceTicker } from "@/components/ServiceTicker";
+import { Services } from "@/components/Services";
+import { ThePromise } from "@/components/ThePromise";
 
 export default function Home() {
   return (
@@ -16,9 +17,10 @@ export default function Home() {
         <Hero />
         <ServiceTicker />
         <AboutSplit />
-        <FeatureBand />
+        <Services />
+        <PippinDifference />
         <Process />
-        <Results />
+        <ThePromise />
         <ClosingCta />
       </main>
       <Footer />

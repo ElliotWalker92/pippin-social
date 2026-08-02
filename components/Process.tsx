@@ -16,7 +16,7 @@ export function Process() {
           </h2>
         </FadeIn>
 
-        <ol className="mt-16 grid gap-10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-6 lg:gap-6">
+        <ol className="mt-16 grid gap-10 sm:grid-cols-2 lg:mt-20 lg:grid-cols-5 lg:gap-6">
           {process.steps.map((step, i) => (
             <FadeIn as="li" key={step.number} delayMs={i * 80}>
               <span className="font-serif text-2xl font-light text-sage">
@@ -31,6 +31,15 @@ export function Process() {
             </FadeIn>
           ))}
         </ol>
+
+        <FadeIn
+          delayMs={process.steps.length * 80}
+          className="mt-14 text-center lg:mt-16"
+        >
+          <p className="mx-auto max-w-md font-sans text-sm leading-relaxed text-charcoal/70">
+            {process.note}
+          </p>
+        </FadeIn>
       </Container>
     </section>
   );

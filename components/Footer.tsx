@@ -6,7 +6,7 @@ import { footer } from "@/lib/content";
 export function Footer() {
   return (
     <footer className="border-t border-stone bg-ivory">
-      <Container className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4 lg:py-20">
+      <Container className="grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-3 lg:py-20">
         <div>
           <div className="flex items-center gap-2">
             <BrandMark className="h-6 w-auto" />
@@ -35,24 +35,6 @@ export function Footer() {
           </h2>
           <ul className="mt-5 space-y-3">
             {footer.nav.map((item) => (
-              <li key={item.label}>
-                <Link
-                  href={item.href}
-                  className="font-sans text-sm text-charcoal hover:text-softblack"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <nav aria-label="Services">
-          <h2 className="font-sans text-xs tracking-widest-plus text-charcoal/50 uppercase">
-            Services
-          </h2>
-          <ul className="mt-5 space-y-3">
-            {footer.services.map((item) => (
               <li key={item.label}>
                 <Link
                   href={item.href}

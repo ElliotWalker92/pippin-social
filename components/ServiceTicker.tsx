@@ -4,7 +4,6 @@ import { serviceTicker } from "@/lib/content";
 export function ServiceTicker() {
   return (
     <section
-      id="services"
       className="border-y border-stone py-6"
       aria-label="Our services"
     >

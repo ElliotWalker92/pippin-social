@@ -2,7 +2,7 @@ import { Resend } from "resend";
 import { validateContactForm, type ContactFormData } from "@/lib/contact";
 
 const TO_EMAIL = "holly@pippinsocial.com";
-const FROM_EMAIL = "pippin <website@send.pippinsocial.com>";
+const FROM_EMAIL = "pippin <website@pippinsocial.com>";
 
 export async function POST(request: Request) {
   let data: ContactFormData;
