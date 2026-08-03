@@ -2,7 +2,7 @@ import { PortableText, type PortableTextComponents } from "@portabletext/react";
 import type { TypedObject } from "@portabletext/types";
 import Image from "next/image";
 import Link from "next/link";
-import { sanityImageLoader, urlForImage } from "@/lib/sanity/image";
+import { urlForImage } from "@/lib/sanity/image";
 import type { UpdateImage } from "@/lib/sanity/queries";
 
 const components: PortableTextComponents = {
@@ -57,7 +57,6 @@ const components: PortableTextComponents = {
         <span className="my-10 block">
           <Image
             src={urlForImage(image).url()}
-            loader={sanityImageLoader}
             alt={image.alt ?? ""}
             width={width}
             height={height}

@@ -10,7 +10,7 @@ import { Nav } from "@/components/Nav";
 import { PortableTextBody } from "@/components/PortableTextBody";
 import { formatDate } from "@/lib/format-date";
 import { updatesPage } from "@/lib/content";
-import { sanityImageLoader, urlForImage } from "@/lib/sanity/image";
+import { urlForImage } from "@/lib/sanity/image";
 import { getUpdateBySlug } from "@/lib/sanity/queries";
 
 export const dynamic = "force-dynamic";
@@ -81,7 +81,6 @@ export default async function UpdatePage({ params }: { params: Params }) {
                 <FadeIn delayMs={100} className="mt-10">
                   <Image
                     src={urlForImage(post.coverImage).url()}
-                    loader={sanityImageLoader}
                     alt={post.coverImage.alt ?? ""}
                     width={post.coverImage.asset.metadata.dimensions.width}
                     height={post.coverImage.asset.metadata.dimensions.height}
