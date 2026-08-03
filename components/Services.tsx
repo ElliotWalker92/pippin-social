@@ -11,14 +11,25 @@ export function Services() {
           {services.map((service, i) => {
             const Icon = featureIcons[service.icon];
             return (
-              <FadeIn as="li" key={service.title} delayMs={i * 100}>
-                <Icon className="h-9 w-9 text-softblack" />
-                <h3 className="mt-6 font-sans text-xs tracking-widest-plus text-softblack uppercase">
-                  {service.title}
-                </h3>
-                <p className="mt-3 max-w-[22ch] font-sans text-sm leading-relaxed text-softblack/80">
-                  {service.body}
-                </p>
+              // Single-column (mobile) lays each pillar out as a row — icon
+              // left, copy filling the rest of the width. From `sm` up the
+              // grid splits into columns, where the stacked version reads
+              // better and the measure cap keeps lines short.
+              <FadeIn
+                as="li"
+                key={service.title}
+                delayMs={i * 100}
+                className="flex items-start gap-6 sm:block"
+              >
+                <Icon className="h-9 w-9 shrink-0 text-softblack" />
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-sans text-xs tracking-widest-plus text-softblack uppercase sm:mt-6">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 font-sans text-sm leading-relaxed text-softblack/80 sm:max-w-[22ch]">
+                    {service.body}
+                  </p>
+                </div>
               </FadeIn>
             );
           })}
