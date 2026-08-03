@@ -49,9 +49,10 @@ const detailQuery = `*[_type == "update" && slug.current == $slug && publishedAt
   }
 }`;
 
-// Route segments render dynamically (see `export const dynamic`), so this
-// only controls how long Sanity responses are cached between requests.
-const cacheOptions = { next: { revalidate: 60 } };
+// Route segments render dynamically (see `export const dynamic`), so every
+// request should see Sanity's current published state — no caching layer
+// on top that could serve a stale (e.g. since-unpublished) result.
+const cacheOptions = { cache: "no-store" as const };
 
 export async function getUpdates(): Promise<UpdateListItem[]> {
   try {
