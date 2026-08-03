@@ -1,7 +1,7 @@
+import Image from "next/image";
 import { Container } from "@/components/Container";
 import { Eyebrow } from "@/components/Eyebrow";
 import { FadeIn } from "@/components/FadeIn";
-import { ImagePlaceholder } from "@/components/ImagePlaceholder";
 import { aboutPage } from "@/lib/content";
 
 export function AboutFounder() {
@@ -11,11 +11,16 @@ export function AboutFounder() {
     <section className="border-t border-stone py-24 lg:py-32">
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <FadeIn>
-          <ImagePlaceholder
-            label={founder.imageLabel}
-            ratio="aspect-[4/5]"
-            className="w-full"
-          />
+          <div className="relative aspect-[4/5] w-full overflow-hidden border border-stone">
+            <Image
+              src="/holly-payne.jpg"
+              alt={founder.imageLabel}
+              fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              className="object-cover"
+              priority
+            />
+          </div>
         </FadeIn>
 
         <FadeIn delayMs={150}>

@@ -15,6 +15,12 @@ export default function sanityImageLoader({
   width: number;
   quality?: number;
 }) {
+  // Local assets (e.g. anything in /public) aren't on Sanity's CDN, so
+  // there are no transform params to add — serve them as-is.
+  if (!/^https?:\/\//.test(src)) {
+    return src;
+  }
+
   const url = new URL(src);
   url.searchParams.set("w", width.toString());
   url.searchParams.set("q", (quality ?? 75).toString());
