@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
 import { cn } from "@/lib/utils";
 
 export function FadeIn({
@@ -28,7 +34,16 @@ export function FadeIn({
           observer.disconnect();
         }
       },
-      { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
+      // `threshold: 0` fires as soon as any part crosses the line, so the
+      // trigger point doesn't depend on how tall the element is — stacked
+      // mobile blocks are far taller than desktop columns, and a ratio-based
+      // threshold made them start noticeably later.
+      //
+      // The bottom margin is a fixed pixel value rather than a percentage:
+      // mobile browsers resize the viewport continuously as the address bar
+      // collapses, which would otherwise keep moving the trigger line
+      // mid-scroll.
+      { threshold: 0, rootMargin: "0px 0px -64px 0px" }
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -37,7 +52,9 @@ export function FadeIn({
   return (
     <Tag
       ref={ref as never}
-      style={{ animationDelay: visible ? `${delayMs}ms` : undefined }}
+      // Consumed by `.fade-in-el` in globals.css, which only applies the
+      // stagger once items sit side by side (see the note there).
+      style={{ "--fade-delay": `${delayMs}ms` } as CSSProperties}
       className={cn("fade-in-el", visible && "is-visible", className)}
     >
       {children}

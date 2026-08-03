@@ -53,6 +53,19 @@ body {
   animation: var(--animate-fade-rise);
 }
 
+/*
+  Stagger only once items sit side by side. Below `sm` the grids collapse to
+  a single column, where each item already arrives at its own scroll
+  position — adding a delay on top just lands the text behind the scroll and
+  reads as stuttering. The `animation` shorthand above resets the delay to 0,
+  so mobile inherits no stagger.
+*/
+@media (min-width: 40rem) {
+  .fade-in-el.is-visible {
+    animation-delay: var(--fade-delay, 0ms);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .fade-in-el {
     opacity: 1;
