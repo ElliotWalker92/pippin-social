@@ -28,12 +28,14 @@ export const hero = {
   cta: { label: "Let's talk", href: "/contact" },
 };
 
+// Links deep into the matching pillar on /services (ids come from
+// servicesPage.pillars[].key).
 export const serviceTicker = [
-  "Strategy",
-  "Content",
-  "Organic",
-  "Paid",
-  "Analytics",
+  { label: "Strategy", href: "/services#strategy" },
+  { label: "Content", href: "/services#content" },
+  { label: "Organic", href: "/services#organic" },
+  { label: "Paid", href: "/services#paid" },
+  { label: "Analytics", href: "/services#analytics" },
 ];
 
 export const about = {

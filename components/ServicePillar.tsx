@@ -14,7 +14,11 @@ export function ServicePillar({
   reverse: boolean;
 }) {
   return (
-    <section className="border-t border-stone py-24 lg:py-32">
+    <section
+      id={pillar.key}
+      // Offsets the anchor jump so the fixed nav doesn't cover the heading.
+      className="scroll-mt-28 border-t border-stone py-24 lg:scroll-mt-32 lg:py-32"
+    >
       <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
         <FadeIn className={cn("order-2", reverse ? "lg:order-2" : "lg:order-1")}>
           <ImagePlaceholder
