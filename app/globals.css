@@ -45,23 +45,44 @@ body {
   color: var(--color-softblack);
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .fade-in-el {
   opacity: 0;
 }
 
+/*
+  Mobile gets opacity only, and quickly.
+
+  The desktop animation also slides the element up 20px, but a vertical
+  transform competes with vertical scrolling: on a momentum flick the page
+  travels hundreds of pixels while the element is still easing through its
+  own 20px, so the content drifts against everything around it and reads as
+  judder. A plain fade has nothing to fight the scroll with. The shorter
+  duration also lets it settle before the element has scrolled past.
+*/
 .fade-in-el.is-visible {
-  animation: var(--animate-fade-rise);
+  animation: fade-in 0.45s ease-out forwards;
 }
 
 /*
-  Stagger only once items sit side by side. Below `sm` the grids collapse to
-  a single column, where each item already arrives at its own scroll
-  position — adding a delay on top just lands the text behind the scroll and
-  reads as stuttering. The `animation` shorthand above resets the delay to 0,
-  so mobile inherits no stagger.
+  From `sm` up: the full fade-and-rise, plus the stagger.
+
+  The stagger is only meaningful where items sit side by side. Below `sm`
+  the grids collapse to one column, where items already arrive at their own
+  scroll positions — an extra delay there just lands the text behind the
+  scroll.
 */
 @media (min-width: 40rem) {
   .fade-in-el.is-visible {
+    animation: var(--animate-fade-rise);
     animation-delay: var(--fade-delay, 0ms);
   }
 }
