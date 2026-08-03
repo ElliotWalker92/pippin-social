@@ -5,7 +5,7 @@ export const brand = {
   tagline: "Social made simple.",
   descriptor: "Full service social media agency",
   services: ["Strategy", "Content", "Organic", "Paid", "Analytics"],
-  email: "hello@pippinsocial.com",
+  email: "holly@pippinsocial.com",
 };
 
 export const nav = {
