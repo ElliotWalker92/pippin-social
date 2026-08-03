@@ -39,7 +39,7 @@ export const serviceTicker = [
 export const about = {
   eyebrow: "About pippin",
   headline: "We're your complete social media team.",
-  body: "Social media was supposed to help businesses grow. Somewhere along the way it became another business to manage. Another agency. Another freelancer. Another meeting. Pippin exists to change that. Our job isn't to create more work for you. It's to take work away.",
+  body: "Social media was supposed to help businesses grow. Somewhere along the way it became another business to manage. Another agency. Another freelancer. Another meeting. pippin exists to change that. Our job isn't to create more work for you. It's to take work away.",
   link: { label: "About us", href: "/about" },
 };
 
@@ -73,7 +73,7 @@ export const services = [
 
 // The emotional differentiator: most agencies sell services, pippin sells headspace.
 export const difference = {
-  heading: "The Pippin Difference",
+  heading: "The pippin Difference",
   pairs: [
     { before: "Most agencies specialise.", after: "We simplify." },
     { before: "Most agencies create more work.", after: "We remove it." },
@@ -83,7 +83,7 @@ export const difference = {
     },
     { before: "Most agencies offer one service.", after: "We own everything." },
   ],
-  closing: "Most agencies sell services. Pippin sells headspace.",
+  closing: "Most agencies sell services. pippin sells headspace.",
 };
 
 export const process = {
@@ -173,7 +173,7 @@ export const aboutPage = {
   },
   purpose: {
     heading: "Our Purpose",
-    body: "Pippin exists to make social media feel effortless. We believe founders should be spending their time growing businesses, leading teams and serving customers — not chasing agencies, approving captions or wondering whether anything has been posted this week. We don't just manage social media. We take ownership of it.",
+    body: "pippin exists to make social media feel effortless. We believe founders should be spending their time growing businesses, leading teams and serving customers — not chasing agencies, approving captions or wondering whether anything has been posted this week. We don't just manage social media. We take ownership of it.",
   },
   manifesto: {
     heading: "The Manifesto",
@@ -181,7 +181,7 @@ export const aboutPage = {
       "We believe social media has become unnecessarily complicated.",
       "Too many platforms. Too many opinions. Too many agencies doing one small piece of the puzzle. Meanwhile, founders are left coordinating everyone.",
       "We don't think it should work like that.",
-      "Pippin was built on a simple idea. Take ownership. Remove complexity. Do great work. Give people their time back.",
+      "pippin was built on a simple idea. Take ownership. Remove complexity. Do great work. Give people their time back.",
       "We're not here to become another meeting in your diary. We're here to become one less thing on your mind.",
     ],
   },
@@ -374,7 +374,7 @@ export const partnershipPage = {
     ],
   },
   monthInside: {
-    heading: "Inside a month with Pippin",
+    heading: "Inside a month with pippin",
     weeks: [
       { label: "Week One", body: "Planning. Strategy. Campaign ideas." },
       {
@@ -429,7 +429,7 @@ export const partnershipPage = {
     sell: "We sell consistency, strategy, growth, peace of mind and headspace.",
   },
   standard: {
-    heading: "The Pippin Standard",
+    heading: "The pippin Standard",
     body: "Every decision we make answers one question: does this make life simpler for our partners? If the answer is no, we don't do it.",
   },
 };
