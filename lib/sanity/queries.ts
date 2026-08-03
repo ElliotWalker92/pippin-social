@@ -49,14 +49,23 @@ const detailQuery = `*[_type == "update" && slug.current == $slug && publishedAt
   }
 }`;
 
-// Route segments render dynamically (see `export const dynamic`), so every
-// request should see Sanity's current published state — no caching layer
-// on top that could serve a stale (e.g. since-unpublished) result.
+// These routes are force-dynamic: every request must reflect Sanity's
+// current published state, so unpublishing takes effect immediately.
+//
+// `cache: "no-store"` alone wasn't enough on Cloudflare Workers — the
+// OpenNext adapter layers a persistent Cache API store underneath, which
+// survives redeploys and kept serving an unpublished post. Sending a
+// unique param per request makes the URL unmatchable in any cache, so the
+// response can only come from Sanity itself.
 const cacheOptions = { cache: "no-store" as const };
+
+function freshParams() {
+  return { cacheBust: `${Date.now()}-${Math.random().toString(36).slice(2)}` };
+}
 
 export async function getUpdates(): Promise<UpdateListItem[]> {
   try {
-    return await sanityClient.fetch(listQuery, {}, cacheOptions);
+    return await sanityClient.fetch(listQuery, freshParams(), cacheOptions);
   } catch (error) {
     console.error("Failed to fetch updates from Sanity:", error);
     return [];
@@ -67,7 +76,11 @@ export async function getUpdateBySlug(
   slug: string
 ): Promise<UpdateDetail | null> {
   try {
-    return await sanityClient.fetch(detailQuery, { slug }, cacheOptions);
+    return await sanityClient.fetch(
+      detailQuery,
+      { slug, ...freshParams() },
+      cacheOptions
+    );
   } catch (error) {
     console.error(`Failed to fetch update "${slug}" from Sanity:`, error);
     return null;
