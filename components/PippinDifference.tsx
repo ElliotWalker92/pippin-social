@@ -20,10 +20,16 @@ export function PippinDifference() {
               delayMs={i * 100}
               className="py-8 text-center"
             >
-              <p className="font-sans text-lg text-charcoal/60">
+              {/*
+                Serif throughout the section so the pairs and the closing
+                line share one voice — they use the same sentence pattern, so
+                switching typeface between them read as inconsistent. Contrast
+                comes from weight and colour instead.
+              */}
+              <p className="font-serif text-xl leading-snug font-light text-charcoal/50 sm:text-2xl">
                 {pair.before}
               </p>
-              <p className="mt-1 font-sans text-lg font-medium text-softblack">
+              <p className="mt-2 font-serif text-xl leading-snug font-medium text-softblack sm:text-2xl">
                 {pair.after}
               </p>
             </FadeIn>
