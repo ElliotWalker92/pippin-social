@@ -172,7 +172,7 @@ export const aboutPage = {
       "We're not here to add to your workload. We're here to take it away.",
   },
   purpose: {
-    heading: "Our Purpose",
+    heading: "Why we exist",
     body: "pippin exists to make social media feel effortless. We believe founders should be spending their time growing businesses, leading teams and serving customers — not chasing agencies, approving captions or wondering whether anything has been posted this week. We don't just manage social media. We take ownership of it.",
   },
   manifesto: {
@@ -186,7 +186,7 @@ export const aboutPage = {
     ],
   },
   beliefs: {
-    heading: "What We Believe",
+    heading: "Where we stand",
     items: [
       "Founders deserve better than managing multiple agencies.",
       "Consistency beats chasing trends.",
@@ -199,18 +199,18 @@ export const aboutPage = {
     ],
   },
   missionVision: {
-    heading: "Our Mission and Vision",
+    heading: "Now and next",
     mission: {
-      title: "Mission",
+      title: "Right now",
       body: "To make social media the easiest part of running a business.",
     },
     vision: {
-      title: "Vision",
+      title: "Where we're headed",
       body: "To become the UK's most trusted boutique full-service social media agency, known for exceptional service, beautiful creative and giving founders their time back. Not because we have the biggest team. Because we're the easiest agency to work with.",
     },
   },
   communication: {
-    heading: "How We Communicate",
+    heading: "On your terms",
     paragraphs: [
       "We don't measure success by how many meetings are in your diary. We measure it by how many things we've taken off it.",
       "Every founder works differently. Some love weekly calls. Some prefer monthly updates. Some simply want to know it's all under control. We'll adapt to you, not the other way around.",
