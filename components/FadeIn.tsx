@@ -27,14 +27,11 @@ export function FadeIn({
     const el = ref.current;
     if (!el) return;
 
-    // Below `sm` the fade starts *before* the element reaches the screen, so
-    // it has already resolved by the time you see it. Triggering once the
-    // element is on screen means watching every row appear, and with no
-    // stagger on mobile a whole group resolves at once — which reads as a
-    // flash. Desktop keeps the later trigger, where the fade-and-rise is
-    // meant to be seen.
-    const isWide = window.matchMedia("(min-width: 40rem)").matches;
-
+    // Which breakpoints actually animate is decided in globals.css — below
+    // `sm` the class is inert. The observer still runs at every width so
+    // that crossing the breakpoint (rotating a phone to landscape clears
+    // 40rem) can't leave content stuck at opacity 0 with nothing to reveal
+    // it.
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -44,16 +41,12 @@ export function FadeIn({
       },
       {
         // `threshold: 0` fires as soon as any part crosses the line, so the
-        // trigger point doesn't depend on how tall the element is — stacked
-        // mobile blocks are far taller than desktop columns, and a
-        // ratio-based threshold made them start noticeably later.
+        // trigger point doesn't depend on how tall the element is.
         threshold: 0,
-        // Fixed pixels rather than percentages: mobile browsers resize the
+        // Fixed pixels rather than a percentage: mobile browsers resize the
         // viewport continuously as the address bar collapses, which would
         // otherwise keep moving the trigger line mid-scroll.
-        // 400px of runway: enough that even a brisk scroll has the 0.45s
-        // fade finished, or nearly so, before the element is on screen.
-        rootMargin: isWide ? "0px 0px -64px 0px" : "0px 0px 400px 0px",
+        rootMargin: "0px 0px -64px 0px",
       }
     );
     observer.observe(el);

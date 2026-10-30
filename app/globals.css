@@ -45,50 +45,46 @@ body {
   color: var(--color-softblack);
 }
 
-@keyframes fade-in {
-  from {
+/*
+  No entrance animation below `sm` — content is simply present.
+
+  A scroll-in fade doesn't earn its place on a phone. Start it once the
+  element is on screen and you watch each row arrive, which reads as a
+  flash; start it early enough to avoid that and it has already finished
+  before you see it. Either way it also leaves content relying on JS to
+  become visible at all. So mobile just renders at full opacity, and
+  desktop opts in below.
+*/
+.fade-in-el {
+  opacity: 1;
+}
+
+@media (min-width: 40rem) {
+  .fade-in-el {
     opacity: 0;
   }
-  to {
-    opacity: 1;
-  }
-}
 
-.fade-in-el {
-  opacity: 0;
-}
-
-/*
-  Mobile gets opacity only, and quickly.
-
-  The desktop animation also slides the element up 20px, but a vertical
-  transform competes with vertical scrolling: on a momentum flick the page
-  travels hundreds of pixels while the element is still easing through its
-  own 20px, so the content drifts against everything around it and reads as
-  judder. A plain fade has nothing to fight the scroll with. The shorter
-  duration also lets it settle before the element has scrolled past.
-*/
-.fade-in-el.is-visible {
-  animation: fade-in 0.45s ease-out forwards;
-}
-
-/*
-  From `sm` up: the full fade-and-rise, plus the stagger.
-
-  The stagger is only meaningful where items sit side by side. Below `sm`
-  the grids collapse to one column, where items already arrive at their own
-  scroll positions — an extra delay there just lands the text behind the
-  scroll.
-*/
-@media (min-width: 40rem) {
+  /*
+    Fade and rise, with the stagger. Both only apply from `sm` up: the rise
+    is a vertical transform, which competes with scrolling on a momentum
+    flick, and the stagger only means anything where items sit side by side
+    — below `sm` the grids collapse to one column.
+  */
   .fade-in-el.is-visible {
     animation: var(--animate-fade-rise);
     animation-delay: var(--fade-delay, 0ms);
   }
 }
 
+/*
+  `.is-visible` is listed too, not just for emphasis: the rule above it is
+  `.fade-in-el.is-visible`, and two classes outrank one regardless of source
+  order. Without matching that specificity, the animation would still run
+  for anyone who has asked for reduced motion.
+*/
 @media (prefers-reduced-motion: reduce) {
-  .fade-in-el {
+  .fade-in-el,
+  .fade-in-el.is-visible {
     opacity: 1;
     animation: none;
   }
